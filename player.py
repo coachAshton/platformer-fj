@@ -34,4 +34,4 @@ class Player:
         self.rectangle.y += self.yVel
 
     def draw(self, screen):
-        pygame.draw.rect(screen, self.color, self.rectangle)
+        pygame.draw.rect(screen, (255, 255, 255), self.rectangle)
