@@ -17,8 +17,9 @@ run = True
 
 while run:
     clock.tick(FPS)
+    SCREEN.fill(0)
 
-    scene.update
+    scene.update()
     scene.draw(SCREEN)
 
     for event in pygame.event.get():
