@@ -13,7 +13,7 @@ class Player:
     def update(self):
         kb = pygame.key.get_pressed()
 
-        self.move(kb)
+        return self.move(kb)
 
     def move(self, kb):
         dx = dy = 0
@@ -39,8 +39,10 @@ class Player:
             self.yVel += self.scene.gravity
 
         self.yVel += dy
-        self.rectangle.x += dx
+        #self.rectangle.x += dx
         self.rectangle.y += self.yVel
+
+        return (-dx, 0)
 
     def draw(self, screen):
         pygame.draw.rect(screen, self.color, self.rectangle)

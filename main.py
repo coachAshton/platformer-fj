@@ -3,8 +3,8 @@ from scene import Scene
 
 pygame.init()
 
-SW = 900
-SH = 500
+SW = 1280
+SH = 720
 
 SCREEN = pygame.display.set_mode((SW, SH))
 pygame.display.set_caption("Platformer")
