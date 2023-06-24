@@ -42,6 +42,9 @@ class Player:
         #self.rectangle.x += dx
         self.rectangle.y += self.yVel
 
+        if self.rectangle.x + dx < self.scene.right / 2 and self.rectangle.x + dx > 0:
+            self.rectangle.x += dx
+            dx = 0
         return (-dx, 0)
 
     def draw(self, screen):

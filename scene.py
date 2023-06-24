@@ -7,6 +7,7 @@ class Scene:
         self.gravity = 2
 
         self.bottom = sh
+        self.right = sw
         self.map = Map(2000, 1000)
         self.player1 = Player(pygame.Rect(0, 0, 20, 20), (200, 23, 188), self)
 
