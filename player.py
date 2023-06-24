@@ -39,10 +39,13 @@ class Player:
             self.yVel += self.scene.gravity
 
         self.yVel += dy
-        #self.rectangle.x += dx
-        self.rectangle.y += self.yVel
+        yVelCopy = self.yVel
 
-        return (-dx, 0)
+        if self.rectangle.y + self.yVel > self.scene.bottom / 2:
+            self.rectangle.y += self.yVel
+            yVelCopy = 0
+
+        return (-dx, -yVelCopy)
 
     def draw(self, screen):
         pygame.draw.rect(screen, self.color, self.rectangle)
