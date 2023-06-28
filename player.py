@@ -41,12 +41,10 @@ class Player:
         self.yVel += dy
         yVelCopy = self.yVel
 
-<<<<<<< Updated upstream
         if self.rectangle.x + dx < self.scene.right / 2 and self.rectangle.x + dx > 0:
             self.rectangle.x += dx
             dx = 0
-        return (-dx, 0)
-=======
+
         if self.rectangle.y + self.yVel > self.scene.bottom / 2:
             self.rectangle.y += self.yVel
             yVelCopy = 0
@@ -56,7 +54,6 @@ class Player:
             dx = 0
 
         return (-dx, -yVelCopy)
->>>>>>> Stashed changes
 
     def draw(self, screen):
         pygame.draw.rect(screen, self.color, self.rectangle)
