@@ -9,7 +9,7 @@ class Scene:
         self.bottom = sh
         self.right = sw
         self.map = Map(2000, 1000)
-        self.player1 = Player(pygame.Rect(0, 0, 20, 20), (200, 23, 188), self)
+        self.player1 = Player(pygame.Rect(0, sh - 20, 20, 20), (200, 23, 188), self)
 
     def update(self):
         dx, dy = self.player1.update()
