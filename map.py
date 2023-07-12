@@ -18,10 +18,14 @@ class Map:
                 rect = Platform(random.randint(0, width), random.randint(0, height), random.randint(60, 180), 40)
             self.platforms.append(rect)
 
+        self.platforms.append(Platform(0, height - 290, width, 1000))
+
     def move(self, dx, dy):
         for platform in self.platforms:
-            platform.x += dx
-            platform.y += dy
+            if platform is not self.platforms[-1]:
+                platform.x += dx
+                platform.y += dy
+                
     def draw(self, screen):
         for platform in self.platforms:
             pygame.draw.rect(screen, (180, 90, 240), platform)

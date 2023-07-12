@@ -12,7 +12,7 @@ class Scene:
         self.player1 = Player(pygame.Rect(0, sh - 20, 20, 20), (200, 23, 188), self)
 
     def update(self):
-        dx, dy = self.player1.update()
+        dx, dy = self.player1.update(self.map.platforms)
         self.map.move(dx, dy)
 
     def draw(self, screen):

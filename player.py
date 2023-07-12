@@ -10,12 +10,12 @@ class Player:
         self.jumpTimer = 0
         self.jumps = 0
 
-    def update(self):
+    def update(self, platforms):
         kb = pygame.key.get_pressed()
 
-        return self.move(kb)
+        return self.move(kb, platforms)
 
-    def move(self, kb):
+    def move(self, kb, platforms):
         dx = dy = 0
         if kb[pygame.K_SPACE] and self.jumpTimer == 0 and self.jumps < 2:
             dy = -25
@@ -31,12 +31,18 @@ class Player:
         if kb[pygame.K_d]:
             dx = 5
 
-        if self.rectangle.bottom + self.yVel >= self.scene.bottom:
-            self.yVel = self.scene.bottom - self.rectangle.bottom
-            self.jumps = 0
-            self.jumpTimer = 0
-        else:
+        onPlatform = False
+        for platform in platforms:
+            if platform.colliderect(self.rectangle):
+               # if self.rectangle.bottom <= platform.y:
+                self.rectangle.bottom += platform.y - self.rectangle.bottom + 1
+                self.jumps = 0
+                self.jumpTimer = 0
+                onPlatform = True
+        if not onPlatform:
             self.yVel += self.scene.gravity
+            print("go")
+
 
         self.yVel += dy
         yVelCopy = self.yVel
