@@ -31,18 +31,6 @@ class Player:
         if kb[pygame.K_d]:
             dx = 5
 
-        onPlatform = False
-        for platform in platforms:
-            if platform.colliderect(self.rectangle):
-               # if self.rectangle.bottom <= platform.y:
-                self.rectangle.bottom += platform.y - self.rectangle.bottom + 1
-                self.jumps = 0
-                self.jumpTimer = 0
-                onPlatform = True
-        if not onPlatform:
-            self.yVel += self.scene.gravity
-            print("go")
-
 
         self.yVel += dy
         yVelCopy = self.yVel
@@ -58,6 +46,16 @@ class Player:
         if self.rectangle.x + dx < self.scene.right / 2 and self.rectangle.x + dx > 0:
             self.rectangle.x += dx
             dx = 0
+
+        onPlatform = False
+        for platform in platforms:
+            if platform.colliderect(self.rectangle):
+                self.rectangle.bottom += platform.y - self.rectangle.bottom + 1
+                self.jumps = 0
+                self.jumpTimer = 0
+                onPlatform = True
+        if not onPlatform:
+            self.yVel += self.scene.gravity
 
         return (-dx, -yVelCopy)
 
